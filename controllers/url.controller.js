@@ -1,9 +1,9 @@
-const { body } = require('express-validator');
 const { urlServices } = require('../services');
 const { responseHelper } = require('../helper');
 
 const getUrls = async (req, res) => {
     try {
+
         const urls = await urlServices.getUrls();
         if(urls instanceof Error) {
             throw new Error(urls);
@@ -25,6 +25,7 @@ const getUrlByName = async (req, res) => {
 }
 const insertUrl = async (req, res) => {
     try {
+
         const { url, name, description } = req.body;
         const result = await urlServices.insertUrl(url, name, description);
         if(result instanceof Error) {
