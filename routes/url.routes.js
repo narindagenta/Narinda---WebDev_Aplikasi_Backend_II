@@ -6,7 +6,7 @@ router.route("/").get(urlController.getUrls);
 router.route("/:name").get(urlController.getUrlByName);
 router.route("/insert").post(urlController.insertUrl);
 router.route("/delete").delete(urlController.deleteUrl);
-router.route("/update").put(urlController.updateUrl);
+router.route("/update").patch(urlController.updateUrl);
 
 
 module.exports = router;

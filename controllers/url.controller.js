@@ -1,48 +1,62 @@
 const { body } = require('express-validator');
 const { urlServices } = require('../services');
+const { responseHelper } = require('../helper');
 
 const getUrls = async (req, res) => {
     try {
         const urls = await urlServices.getUrls();
-        res.status(200).json(urls);
+        if(urls instanceof Error) {
+            throw new Error(urls);
+        } 
+        res.status(responseHelper.status.success).json(urls);
+        
     } catch (error) {
-        res.status(500).json(error);
+        res.status(responseHelper.status.error).json(error.message);
     }
 }
 const getUrlByName = async (req, res) => {
     try {
         const { name } = req.params;
         const url = await urlServices.getUrlByName(name);
-        res.status(200).json(url);
+        res.status(responseHelper.status.success).json(url);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(responseHelper.status.error).json(error.message);
     }
 }
 const insertUrl = async (req, res) => {
     try {
         const { url, name, description } = req.body;
         const result = await urlServices.insertUrl(url, name, description);
-        res.status(200).json(result);
+        if(result instanceof Error) {
+            throw new Error(result);
+        }
+        res.status(responseHelper.status.success).json(result);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(responseHelper.status.error).json(error.message);
     }
 }
 const deleteUrl = async (req, res) => {
     try {
         const { url } = req.body;
         const result = await urlServices.deleteUrl(url);
-        res.status(200).json(result);
+        if(result instanceof Error) {
+            throw new Error(result);
+        }
+        res.status(responseHelper.status.success).json(result);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(responseHelper.status.error).json(error.message);
     }
 }
 const updateUrl = async (req, res) => {
     try {
         const { url, name, description } = req.body;
         const result = await urlServices.updateUrl(url, name, description);
-        res.status(200).json(result);
+        if(result instanceof Error) {
+            throw new Error(result);
+        }
+        res.status(responseHelper.status.success).json(result);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(responseHelper.status.error).json(error.message);
     }
 }
 
