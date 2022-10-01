@@ -8,8 +8,7 @@ router.route("/").get(urlController.getUrls);
 
 // Example with route /:name in longer version
 router.route("/:name").get(
-    param('name').isLength({max: 5}),
-    body().isEmpty(),
+    param('name').isLength({min: 5}),
     (req, res, next) => {
         const error = validationResult(req);
         if(!error.isEmpty()) {

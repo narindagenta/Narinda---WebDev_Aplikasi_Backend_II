@@ -93,7 +93,9 @@ const updateUrl = async (url, name, description) => {
         if (result.rowCount === 0) {
             throw new Error('URL not found');
         }
-        return result;
+        return {
+            message: 'URL updated successfully',
+        };
     } catch (error) {
         return error
     }

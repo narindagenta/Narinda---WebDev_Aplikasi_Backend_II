@@ -3,7 +3,7 @@ const { validator } = require('./validator');
 
 
 const getUrlByName  = [
-    param('name').isLength({max: 5}),
+    param('name').isLength({min: 5}),
     validator
 ]
 

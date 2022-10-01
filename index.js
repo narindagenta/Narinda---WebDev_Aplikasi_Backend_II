@@ -16,7 +16,7 @@ databaseConfig.connect((err)=>{
 })
 
 app.use(express.Router());
-app.use('/api', routes)
+app.use('/', routes)
 
 // app.get('/',(req,res)=>{
 //     db.query(`SELECT * FROM links`,(err,results)=>{
