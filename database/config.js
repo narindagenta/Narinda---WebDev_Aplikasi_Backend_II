@@ -3,9 +3,9 @@ const  { Client }  = require('pg')
 const databaseConfig = new Client({
     host: 'localhost',
     user: 'postgres',
-    database: 'unhan-backend-app2',
+    database: 'narinda_08',
     port: 5432,
-    password: 'postgres'
+    password: 'terserah'
 })
 
 module.exports = databaseConfig
